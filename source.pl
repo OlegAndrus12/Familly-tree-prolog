@@ -126,6 +126,11 @@ ancestor(X,Z) :-
     parent(X,Y), 
     ancestor(Y,Z).
 
+% X is a first descendant of Z
+descendant(X,Z):-
+    child(X,Z).
+
 % X is an arbitrary descendant of Z
-descendant(X,Z) :- 
-    ancestor(Z,X).
+descendant(X,Z):-
+    child(X,Y),
+    descendant(Y,Z).
